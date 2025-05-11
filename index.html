@@ -804,4 +804,427 @@
                 <div class="slide-content">
                     <h1><span>Ad</span>Werk - Ihr Partner für digitales Marketing</h1>
                     <p>Mit uns steigern Sie Ihren Erfolg durch zielgerichtetes Online-Marketing und professionelle Web-Präsenz.</p>
-                    <a href="#contact"
+                    <a href="#contact" class="btn">Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slideshow arrows -->
+        <div class="slide-arrow prev-slide" id="prevSlide">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="slide-arrow next-slide" id="nextSlide">
+            <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <div class="dot-container">
+            <span class="dot active-dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Über uns</h2>
+            <div class="about-content" data-aos="fade-up" data-aos-delay="200">
+                <p>Wir sind eine dynamische Werbeagentur, die sich auf die Erstellung professioneller Websites und effektive Paid Advertising Kampagnen spezialisiert hat. Unser Ziel ist es, Ihnen dabei zu helfen, Ihre Online-Präsenz zu maximieren und Ihre Zielgruppe zu erreichen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Unsere Dienstleistungen</h2>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon" style="color: var(--accent-orange);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Website-Erstellung</h3>
+                    <p>Wir erstellen professionelle, moderne und responsive Websites für Unternehmer. Maßgeschneiderte Lösungen, die Ihr Unternehmen optimal präsentieren.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon" style="color: var(--accent-red);">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Paid Advertising</h3>
+                    <p>Effektive Werbekampagnen auf Google, Facebook, Instagram und anderen Plattformen. Zielgenaue Ansprache Ihrer potenziellen Kunden.</p>
+                </div>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon" style="color: var(--accent-orange);">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Digitale Strategie</h3>
+                    <p>Wir entwickeln ganzheitliche digitale Strategien, die Ihre Online-Präsenz stärken und Ihren Umsatz steigern.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Kontaktieren Sie uns</h2>
+            <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
+                <div class="alert alert-success" id="form-success">
+                    Vielen Dank für Ihre Nachricht! Wir werden uns so schnell wie möglich bei Ihnen melden.
+                </div>
+                <div class="alert alert-danger" id="form-error">
+                    Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.
+                </div>
+                <form id="contactForm" action="https://formspree.io/f/xwponvzq" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail</label>
+                        <input type="email" name="_replyto" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" name="phone" id="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nachricht</label>
+                        <textarea name="message" id="message" class="form-control" required></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" value="Neue Anfrage von der AdWerk-Website">
+                    <input type="text" name="_gotcha" style="display:none">
+                    <input type="hidden" name="_next" value="#home">
+                    <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Absenden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">Ad<span>Werk</span></div>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#services">Dienstleistungen</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <div class="copyright">
+                &copy; 2025 AdWerk. Alle Rechte vorbehalten.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // AOS Initialization (Animation On Scroll)
+        document.addEventListener('DOMContentLoaded', function() {
+            // AOS initialisieren
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: false,
+                mirror: true
+            });
+
+            // Theme Toggle Funktionalität
+            const themeToggleDesktop = document.getElementById('themeToggle');
+            const themeToggleMobile = document.getElementById('mobileThemeToggle');
+            const htmlElement = document.documentElement;
+            
+            // Gespeichertes Theme laden oder Standard (light) setzen
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            htmlElement.setAttribute('data-theme', savedTheme);
+            updateThemeIcons(savedTheme);
+            
+            // Event-Listener zu Theme-Toggles hinzufügen, falls sie existieren
+            if (themeToggleDesktop) {
+                themeToggleDesktop.addEventListener('click', toggleTheme);
+            }
+            
+            if (themeToggleMobile) {
+                themeToggleMobile.addEventListener('click', toggleTheme);
+            }
+            
+            // Funktion zum Aktualisieren der Theme-Icons
+            function updateThemeIcons(theme) {
+                // Desktop-Toggle aktualisieren, falls er existiert
+                if (themeToggleDesktop) {
+                    const desktopIcon = themeToggleDesktop.querySelector('i');
+                    if (desktopIcon) {
+                        desktopIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                    }
+                }
+                
+                // Mobile-Toggle aktualisieren, falls er existiert
+                if (themeToggleMobile) {
+                    const mobileIcon = themeToggleMobile.querySelector('i');
+                    if (mobileIcon) {
+                        mobileIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                    }
+                }
+            }
+            
+            // Funktion zum Umschalten des Themes
+            function toggleTheme() {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                updateThemeIcons(newTheme);
+            }
+
+            // Mobile Menü
+            const menuBtn = document.querySelector('.menu-btn');
+            const closeBtn = document.getElementById('closeMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('overlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+            
+            // Prüfe, ob alle Elemente existieren bevor Event Listener hinzugefügt werden
+            if (menuBtn && mobileMenu && overlay) {
+                menuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    overlay.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            function closeMenu() {
+                if (mobileMenu && overlay) {
+                    mobileMenu.classList.remove('active');
+                    overlay.style.display = 'none';
+                    document.body.style.overflow = '';
+                }
+            }
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeMenu);
+            }
+            
+            if (overlay) {
+                overlay.addEventListener('click', closeMenu);
+            }
+            
+            if (mobileNavLinks) {
+                mobileNavLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
+                });
+            }
+
+            // Slideshow initialisieren
+            initSlideshow();
+        });
+        
+        // Slideshow Funktionalität
+        function initSlideshow() {
+            let slideIndex = 0;
+            const slidesWrapper = document.getElementById('slidesWrapper');
+            const dots = document.getElementsByClassName("dot");
+            const prevSlideBtn = document.getElementById('prevSlide');
+            const nextSlideBtn = document.getElementById('nextSlide');
+            let slideInterval;
+            
+            // Prüfe, ob alle Elemente existieren
+            if (!slidesWrapper || !dots || !prevSlideBtn || !nextSlideBtn) {
+                console.error("Slideshow-Elemente nicht gefunden");
+                return;
+            }
+            
+            // Anfangsposition setzen
+            updateSlidePosition();
+            
+            // Auto-Slideshow starten
+            startSlideshow();
+            
+            // Pfeile für die Navigation
+            prevSlideBtn.addEventListener('click', function() {
+                navigateSlide(-1);
+            });
+            
+            nextSlideBtn.addEventListener('click', function() {
+                navigateSlide(1);
+            });
+            
+            // Navigation mit Punkten
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].addEventListener('click', function() {
+                    goToSlide(i);
+                });
+            }
+            
+            // Wischgesten für die mobile Nutzung
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            slidesWrapper.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+                clearInterval(slideInterval);
+            }, { passive: true });
+            
+            slidesWrapper.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+                startSlideshow();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX) {
+                    // Nach links wischen
+                    navigateSlide(1);
+                } else if (touchEndX > touchStartX) {
+                    // Nach rechts wischen
+                    navigateSlide(-1);
+                }
+            }
+            
+            function updateSlidePosition() {
+                slidesWrapper.style.transform = `translateX(-${slideIndex * 33.333}%)`;
+                updateDots();
+            }
+            
+            function updateDots() {
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].className = dots[i].className.replace(" active-dot", "");
+                }
+                dots[slideIndex].className += " active-dot";
+            }
+            
+            function navigateSlide(direction) {
+                // Bei manueller Navigation Intervall zurücksetzen
+                clearInterval(slideInterval);
+                
+                slideIndex += direction;
+                
+                // Bei Überlauf umschalten
+                if (slideIndex >= 3) {
+                    slideIndex = 0;
+                } else if (slideIndex < 0) {
+                    slideIndex = 2;
+                }
+                
+                updateSlidePosition();
+                startSlideshow();
+            }
+            
+            function goToSlide(index) {
+                // Bei manueller Navigation Intervall zurücksetzen
+                clearInterval(slideInterval);
+                
+                slideIndex = index;
+                updateSlidePosition();
+                startSlideshow();
+            }
+            
+            function startSlideshow() {
+                // Existierendes Intervall löschen
+                clearInterval(slideInterval);
+                
+                // Neues Intervall setzen
+                slideInterval = setInterval(function() {
+                    slideIndex++;
+                    if (slideIndex >= 3) {
+                        slideIndex = 0;
+                    }
+                    updateSlidePosition();
+                }, 5000);
+            }
+        }
+        
+        // Sanftes Scrollen zu Ankern
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetElement = document.querySelector(this.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // AOS Scroll-Richtung anpassen
+        window.addEventListener('scroll', function() {
+            const scrollDirection = this.oldScroll > this.scrollY ? 'up' : 'down';
+            this.oldScroll = this.scrollY;
+            
+            // AOS-Animationen basierend auf Scroll-Richtung aktualisieren
+            document.querySelectorAll('[data-aos]').forEach(element => {
+                const currentAnimation = element.getAttribute('data-aos');
+                if (currentAnimation) {
+                    if (scrollDirection === 'down' && currentAnimation.includes('fade-down')) {
+                        element.setAttribute('data-aos', currentAnimation.replace('fade-down', 'fade-up'));
+                    } else if (scrollDirection === 'up' && currentAnimation.includes('fade-up')) {
+                        element.setAttribute('data-aos', currentAnimation.replace('fade-up', 'fade-down'));
+                    }
+                }
+            });
+        });
+        
+        // Formular-Handling
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                
+                fetch(this.action, {
+                    method: this.method,
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
+                    const formSuccess = document.getElementById('form-success');
+                    const formError = document.getElementById('form-error');
+                    
+                    if (response.ok) {
+                        // Erfolgsmeldung anzeigen
+                        if (formSuccess) formSuccess.style.display = 'block';
+                        // Formular zurücksetzen
+                        this.reset();
+                        // Nach kurzer Verzögerung zurück zum Anfang
+                        setTimeout(() => {
+                            window.location.href = '#home';
+                            // Scrollposition zurücksetzen
+                            window.scrollTo(0, 0);
+                            // Erfolgsmeldung ausblenden
+                            if (formSuccess) {
+                                setTimeout(() => {
+                                    formSuccess.style.display = 'none';
+                                }, 1000);
+                            }
+                        }, 2000);
+                    } else {
+                        // Fehlermeldung anzeigen
+                        if (formError) {
+                            formError.style.display = 'block';
+                            setTimeout(() => {
+                                formError.style.display = 'none';
+                            }, 3000);
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Formular-Übermittlungsfehler:', error);
+                    const formError = document.getElementById('form-error');
+                    if (formError) {
+                        formError.style.display = 'block';
+                        setTimeout(() => {
+                            formError.style.display = 'none';
+                        }, 3000);
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
