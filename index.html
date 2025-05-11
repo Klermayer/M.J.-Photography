@@ -249,15 +249,15 @@
         }
         
         .slide1 {
-            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
         }
         
         .slide2 {
-            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('/api/placeholder/1200/801') center/cover no-repeat;
+            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('https://images.unsplash.com/photo-1557682250-81f3414fbd49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
         }
         
         .slide3 {
-            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('/api/placeholder/1200/802') center/cover no-repeat;
+            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
         }
         
         .slide-content {
@@ -1026,6 +1026,8 @@
         function initSlideshow() {
             let slideIndex = 0;
             const slidesWrapper = document.getElementById('slidesWrapper');
+            const slides = document.querySelectorAll('.mySlides');
+            const totalSlides = slides.length; // Dynamische Bestimmung der Anzahl der Slides
             const dots = document.getElementsByClassName("dot");
             const prevSlideBtn = document.getElementById('prevSlide');
             const nextSlideBtn = document.getElementById('nextSlide');
@@ -1103,10 +1105,10 @@
                 slideIndex += direction;
                 
                 // Bei Überlauf umschalten
-                if (slideIndex >= 3) {
+                if (slideIndex >= totalSlides) {
                     slideIndex = 0;
                 } else if (slideIndex < 0) {
-                    slideIndex = 2;
+                    slideIndex = totalSlides - 1;
                 }
                 
                 updateSlidePosition();
@@ -1129,7 +1131,7 @@
                 // Neues Intervall setzen
                 slideInterval = setInterval(function() {
                     slideIndex++;
-                    if (slideIndex >= 3) {
+                    if (slideIndex >= totalSlides) {
                         slideIndex = 0;
                     }
                     updateSlidePosition();
