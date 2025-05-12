@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdWerk - Ihre Werbeagentur</title>
+    
+    <!-- Google Tag Manager -->
+    <script>
+        // Wird nur ausgeführt, wenn Cookies akzeptiert wurden
+        function loadGoogleAnalytics() {
+            // Google Analytics Tag hinzufügen
+            var gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-T1Z3GD2HGV';
+            document.head.appendChild(gaScript);
+            
+            // Google Analytics Code ausführen
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-T1Z3GD2HGV');
+        }
+        
+        // Prüfen, ob Cookies bereits akzeptiert wurden
+        if (localStorage.getItem('cookies-accepted') === 'true') {
+            loadGoogleAnalytics();
+        }
+    </script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <style>
@@ -18,7 +42,7 @@
             --border-color: #dee2e6;
             --accent-orange: #ff6b00;
             --accent-red: #e63946;
-            --slide-overlay: rgba(255, 255, 255, 0.7);
+            --slide-overlay: rgba(255, 255, 255, 0.1);
         }
         
         [data-theme="dark"] {
@@ -109,7 +133,6 @@
             color: var(--text-color);
             font-size: 20px;
             cursor: pointer;
-            margin-left: 20px;
             transition: transform 0.3s ease;
             display: flex;
             align-items: center;
@@ -126,14 +149,35 @@
             color: var(--accent-orange);
         }
         
-        /* Mobile Menu Button */
-        .menu-btn {
+        /* Right Controls */
+        .right-controls {
             display: none;
+        }
+        
+        .mobile-theme-toggle {
             background: none;
             border: none;
-            font-size: 24px;
+            color: var(--text-color);
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 15px;
+        }
+        
+        .mobile-theme-toggle:hover {
+            color: var(--accent-orange);
+        }
+        
+        /* Mobile Menu Button */
+        .menu-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
             color: var(--text-color);
             cursor: pointer;
+        }
+        
+        .menu-btn:hover {
+            color: var(--accent-orange);
         }
         
         /* Mobile Menu */
@@ -167,7 +211,7 @@
         
         .mobile-nav {
             list-style: none;
-            margin-top: 60px;
+            margin-top: 30px;
         }
         
         .mobile-nav li {
@@ -185,32 +229,6 @@
         }
         
         .mobile-nav a:hover {
-            color: var(--accent-orange);
-        }
-        
-        /* Mobile Theme Toggle */
-        .mobile-theme-toggle {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 20px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background-color: var(--card-bg);
-            box-shadow: var(--card-shadow);
-        }
-        
-        .mobile-theme-toggle:hover {
-            transform: rotate(15deg);
             color: var(--accent-orange);
         }
         
@@ -249,15 +267,15 @@
         }
         
         .slide1 {
-            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('slide1.jpg') center/cover no-repeat;
         }
         
         .slide2 {
-            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('https://images.unsplash.com/photo-1557682250-81f3414fbd49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('slide2.jpg') center/cover no-repeat;
         }
         
         .slide3 {
-            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('https://images.unsplash.com/photo-1580927752452-89d86da3fa0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background: linear-gradient(var(--slide-overlay), var(--slide-overlay)), url('slide3.jpg') center/cover no-repeat;
         }
         
         .slide-content {
@@ -274,7 +292,8 @@
             font-size: 48px;
             margin-bottom: 20px;
             line-height: 1.2;
-            color: var(--text-color);
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
         }
         
         .slide-content h1 span {
@@ -284,7 +303,8 @@
         .slide-content p {
             font-size: 18px;
             margin-bottom: 30px;
-            color: var(--text-color);
+            color: #ffffff;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
         
         .btn {
@@ -539,22 +559,129 @@
             color: #dc3545;
         }
         
-        /* Transition classes */
-        .transition-theme {
-            transition: background-color 0.3s ease, 
-                        color 0.3s ease, 
-                        border-color 0.3s ease,
-                        box-shadow 0.3s ease;
+        /* Cookie-Hinweis */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--secondary-bg);
+            color: var(--text-color);
+            padding: 15px 20px;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
-        /* Responsive */
+        .cookie-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-text {
+            flex: 1;
+            margin-right: 20px;
+            padding: 10px 0;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .cookie-btn {
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .cookie-accept {
+            background-color: var(--accent-orange);
+            color: white;
+        }
+        
+        .cookie-accept:hover {
+            background-color: var(--accent-red);
+            transform: translateY(-2px);
+        }
+        
+        .cookie-decline {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--border-color);
+        }
+        
+        .cookie-decline:hover {
+            background-color: var(--border-color);
+        }
+        
+        .cookie-more {
+            background: none;
+            border: none;
+            color: var(--accent-orange);
+            cursor: pointer;
+            margin-right: 15px;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+        
+        .cookie-more:hover {
+            color: var(--accent-red);
+        }
+        
+        .cookie-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-top: 0;
+            border-top: 0 solid var(--border-color);
+        }
+        
+        .cookie-details.active {
+            max-height: 500px;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .cookie-details h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .cookie-details p {
+            margin-bottom: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .cookie-details ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .cookie-details li {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        
+        /* Media Queries */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
             
-            .menu-btn {
-                display: block;
+            .right-controls {
+                display: flex;
+                align-items: center;
             }
             
             /* Mobile Slideshow Optimization */
@@ -687,6 +814,27 @@
                 font-size: 12px;
                 padding: 0 20px;
             }
+            
+            /* Mobile Cookie Banner */
+            .cookie-main {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .cookie-text {
+                margin-right: 0;
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            
+            .cookie-buttons {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .cookie-details {
+                padding: 0 5px;
+            }
         }
         
         /* Extra Small Mobile Devices (320px and below) */
@@ -757,9 +905,14 @@
                         </button>
                     </li>
                 </ul>
-                <button class="menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
+                <div class="right-controls">
+                    <button id="mobileThemeToggle" class="mobile-theme-toggle">
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    <button id="menuBtn" class="menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </nav>
         </div>
     </header>
@@ -769,9 +922,6 @@
     <div class="mobile-menu" id="mobileMenu">
         <button class="close-menu" id="closeMenu">
             <i class="fas fa-times"></i>
-        </button>
-        <button id="mobileThemeToggle" class="mobile-theme-toggle" aria-label="Theme umschalten">
-            <i class="fas fa-sun"></i>
         </button>
         <ul class="mobile-nav">
             <li><a href="#home">Home</a></li>
@@ -919,10 +1069,45 @@
         </div>
     </footer>
 
+    <!-- Cookie-Banner -->
+    <div id="cookieBanner" class="cookie-banner" style="display: none;">
+        <div class="cookie-main">
+            <div class="cookie-text">
+                <p>Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern. Durch die Nutzung unserer Website stimmen Sie unserer Verwendung von Cookies zu.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button id="cookieMoreInfo" class="cookie-more">Mehr anzeigen</button>
+                <button id="acceptCookies" class="cookie-btn cookie-accept">Akzeptieren</button>
+                <button id="declineCookies" class="cookie-btn cookie-decline">Nicht akzeptieren</button>
+            </div>
+        </div>
+        <div id="cookieDetails" class="cookie-details">
+            <h4>Verwendete Cookies und übermittelte Daten</h4>
+            <p>Auf unserer Website kommen folgende Arten von Cookies zum Einsatz:</p>
+            <ul>
+                <li><strong>Notwendige Cookies:</strong> Diese Cookies sind für die grundlegende Funktionalität der Website erforderlich und können nicht deaktiviert werden.</li>
+                <li><strong>Analyse-Cookies:</strong> Diese Cookies ermöglichen es uns, Besuche zu zählen und Bewegungsmuster auf unserer Website zu analysieren. Wir nutzen Google Analytics, um zu verstehen, wie Benutzer mit unserer Website interagieren.</li>
+            </ul>
+            <h4>Folgende Daten werden an Google Analytics übermittelt:</h4>
+            <ul>
+                <li>Anonymisierte IP-Adresse</li>
+                <li>Informationen über Ihren Browser und Ihr Gerät</li>
+                <li>Besuchte Seiten und Ihre Interaktionen auf unserer Website</li>
+                <li>Verweildauer auf unserer Website</li>
+                <li>Verweisende Website oder Quelle, von der Sie unsere Website besucht haben</li>
+            </ul>
+            <p>Die erhobenen Daten werden verwendet, um unser Webangebot zu verbessern und Ihnen ein besseres Nutzererlebnis zu bieten. Wir verkaufen Ihre Daten nicht an Dritte und verwenden sie ausschließlich für die genannten Analysezwecke.</p>
+            <p>Weitere Informationen zu unseren Datenschutzpraktiken finden Sie in unserer Datenschutzerklärung.</p>
+            
+            <!-- Hier ist der neue Button zu Datenschutz -->
+            <a href="datenschutz.html" class="btn" style="display: inline-block; margin-top: 15px; font-size: 14px; padding: 8px 20px;">Zu den Datenschutz</a>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // AOS Initialization (Animation On Scroll)
+        // Cookie-Banner-Funktionalität
         document.addEventListener('DOMContentLoaded', function() {
             // AOS initialisieren
             AOS.init({
@@ -931,8 +1116,49 @@
                 once: false,
                 mirror: true
             });
-
-            // Theme Toggle Funktionalität
+            
+            const cookieBanner = document.getElementById('cookieBanner');
+            const acceptBtn = document.getElementById('acceptCookies');
+            const declineBtn = document.getElementById('declineCookies');
+            const moreInfoBtn = document.getElementById('cookieMoreInfo');
+            const cookieDetails = document.getElementById('cookieDetails');
+            
+            // Prüfen, ob Cookie-Einstellung bereits vorhanden ist
+            const cookieChoice = localStorage.getItem('cookies-accepted');
+            
+            // Wenn noch keine Entscheidung getroffen wurde, Banner anzeigen
+            if (cookieChoice === null) {
+                cookieBanner.style.display = 'flex';
+            }
+            
+            // Cookie akzeptieren
+            acceptBtn.addEventListener('click', function() {
+                localStorage.setItem('cookies-accepted', 'true');
+                cookieBanner.style.display = 'none';
+                
+                // Google Analytics laden
+                loadGoogleAnalytics();
+            });
+            
+            // Cookie ablehnen
+            declineBtn.addEventListener('click', function() {
+                localStorage.setItem('cookies-accepted', 'false');
+                cookieBanner.style.display = 'none';
+            });
+            
+            // Mehr Informationen anzeigen/ausblenden
+            moreInfoBtn.addEventListener('click', function() {
+                cookieDetails.classList.toggle('active');
+                
+                // Text des Buttons ändern
+                if (cookieDetails.classList.contains('active')) {
+                    moreInfoBtn.textContent = 'Weniger anzeigen';
+                } else {
+                    moreInfoBtn.textContent = 'Mehr anzeigen';
+                }
+            });
+            
+            // Theme Toggle
             const themeToggleDesktop = document.getElementById('themeToggle');
             const themeToggleMobile = document.getElementById('mobileThemeToggle');
             const htmlElement = document.documentElement;
@@ -940,9 +1166,31 @@
             // Gespeichertes Theme laden oder Standard (light) setzen
             const savedTheme = localStorage.getItem('theme') || 'light';
             htmlElement.setAttribute('data-theme', savedTheme);
-            updateThemeIcons(savedTheme);
             
-            // Event-Listener zu Theme-Toggles hinzufügen, falls sie existieren
+            // Icons aktualisieren
+            if (savedTheme === 'dark') {
+                if (themeToggleDesktop) themeToggleDesktop.querySelector('i').className = 'fas fa-moon';
+                if (themeToggleMobile) themeToggleMobile.querySelector('i').className = 'fas fa-moon';
+            } else {
+                if (themeToggleDesktop) themeToggleDesktop.querySelector('i').className = 'fas fa-sun';
+                if (themeToggleMobile) themeToggleMobile.querySelector('i').className = 'fas fa-sun';
+            }
+            
+            // Theme Toggle Funktion
+            function toggleTheme() {
+                const currentTheme = htmlElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                
+                htmlElement.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+                
+                // Icons aktualisieren
+                const newIcon = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+                if (themeToggleDesktop) themeToggleDesktop.querySelector('i').className = newIcon;
+                if (themeToggleMobile) themeToggleMobile.querySelector('i').className = newIcon;
+            }
+            
+            // Event-Listener zu Theme-Toggles hinzufügen
             if (themeToggleDesktop) {
                 themeToggleDesktop.addEventListener('click', toggleTheme);
             }
@@ -950,45 +1198,16 @@
             if (themeToggleMobile) {
                 themeToggleMobile.addEventListener('click', toggleTheme);
             }
-            
-            // Funktion zum Aktualisieren der Theme-Icons
-            function updateThemeIcons(theme) {
-                // Desktop-Toggle aktualisieren, falls er existiert
-                if (themeToggleDesktop) {
-                    const desktopIcon = themeToggleDesktop.querySelector('i');
-                    if (desktopIcon) {
-                        desktopIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-                    }
-                }
-                
-                // Mobile-Toggle aktualisieren, falls er existiert
-                if (themeToggleMobile) {
-                    const mobileIcon = themeToggleMobile.querySelector('i');
-                    if (mobileIcon) {
-                        mobileIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-                    }
-                }
-            }
-            
-            // Funktion zum Umschalten des Themes
-            function toggleTheme() {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                htmlElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateThemeIcons(newTheme);
-            }
 
             // Mobile Menü
-            const menuBtn = document.querySelector('.menu-btn');
+            const menuBtn = document.getElementById('menuBtn');
             const closeBtn = document.getElementById('closeMenu');
             const mobileMenu = document.getElementById('mobileMenu');
             const overlay = document.getElementById('overlay');
             const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
             
-            // Prüfe, ob alle Elemente existieren bevor Event Listener hinzugefügt werden
-            if (menuBtn && mobileMenu && overlay) {
+            // Menü öffnen
+            if (menuBtn) {
                 menuBtn.addEventListener('click', function() {
                     mobileMenu.classList.add('active');
                     overlay.style.display = 'block';
@@ -996,12 +1215,11 @@
                 });
             }
             
+            // Menü schließen
             function closeMenu() {
-                if (mobileMenu && overlay) {
-                    mobileMenu.classList.remove('active');
-                    overlay.style.display = 'none';
-                    document.body.style.overflow = '';
-                }
+                mobileMenu.classList.remove('active');
+                overlay.style.display = 'none';
+                document.body.style.overflow = '';
             }
             
             if (closeBtn) {
@@ -1012,32 +1230,25 @@
                 overlay.addEventListener('click', closeMenu);
             }
             
-            if (mobileNavLinks) {
-                mobileNavLinks.forEach(link => {
-                    link.addEventListener('click', closeMenu);
-                });
-            }
+            // Menü schließen bei Klick auf einen Link
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
 
             // Slideshow initialisieren
             initSlideshow();
         });
-        
+
         // Slideshow Funktionalität
         function initSlideshow() {
             let slideIndex = 0;
             const slidesWrapper = document.getElementById('slidesWrapper');
             const slides = document.querySelectorAll('.mySlides');
-            const totalSlides = slides.length; // Dynamische Bestimmung der Anzahl der Slides
+            const totalSlides = slides.length; // Dynamisch die Anzahl der Slides ermitteln
             const dots = document.getElementsByClassName("dot");
             const prevSlideBtn = document.getElementById('prevSlide');
             const nextSlideBtn = document.getElementById('nextSlide');
             let slideInterval;
-            
-            // Prüfe, ob alle Elemente existieren
-            if (!slidesWrapper || !dots || !prevSlideBtn || !nextSlideBtn) {
-                console.error("Slideshow-Elemente nicht gefunden");
-                return;
-            }
             
             // Anfangsposition setzen
             updateSlidePosition();
@@ -1045,7 +1256,7 @@
             // Auto-Slideshow starten
             startSlideshow();
             
-            // Pfeile für die Navigation
+            // Event-Listener für Pfeile
             prevSlideBtn.addEventListener('click', function() {
                 navigateSlide(-1);
             });
@@ -1054,14 +1265,14 @@
                 navigateSlide(1);
             });
             
-            // Navigation mit Punkten
+            // Event-Listener für Punkte
             for (let i = 0; i < dots.length; i++) {
                 dots[i].addEventListener('click', function() {
                     goToSlide(i);
                 });
             }
             
-            // Wischgesten für die mobile Nutzung
+            // Touch-Events für Mobilgeräte
             let touchStartX = 0;
             let touchEndX = 0;
             
@@ -1077,12 +1288,18 @@
             }, { passive: true });
             
             function handleSwipe() {
-                if (touchEndX < touchStartX) {
-                    // Nach links wischen
-                    navigateSlide(1);
-                } else if (touchEndX > touchStartX) {
-                    // Nach rechts wischen
-                    navigateSlide(-1);
+                // Mindestdistanz für einen Swipe
+                const minSwipeDistance = 50;
+                const swipeDistance = touchEndX - touchStartX;
+                
+                if (Math.abs(swipeDistance) >= minSwipeDistance) {
+                    if (swipeDistance < 0) {
+                        // Nach links wischen
+                        navigateSlide(1);
+                    } else {
+                        // Nach rechts wischen
+                        navigateSlide(-1);
+                    }
                 }
             }
             
@@ -1099,7 +1316,7 @@
             }
             
             function navigateSlide(direction) {
-                // Bei manueller Navigation Intervall zurücksetzen
+                // Intervall zurücksetzen
                 clearInterval(slideInterval);
                 
                 slideIndex += direction;
@@ -1116,7 +1333,7 @@
             }
             
             function goToSlide(index) {
-                // Bei manueller Navigation Intervall zurücksetzen
+                // Intervall zurücksetzen
                 clearInterval(slideInterval);
                 
                 slideIndex = index;
@@ -1139,11 +1356,14 @@
             }
         }
         
-        // Sanftes Scrollen zu Ankern
+        // Sanftes Scrollen für Anker-Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const targetElement = document.querySelector(this.getAttribute('href'));
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth'
@@ -1152,81 +1372,54 @@
             });
         });
         
-        // AOS Scroll-Richtung anpassen
-        window.addEventListener('scroll', function() {
-            const scrollDirection = this.oldScroll > this.scrollY ? 'up' : 'down';
-            this.oldScroll = this.scrollY;
+        // Formular-Handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // AOS-Animationen basierend auf Scroll-Richtung aktualisieren
-            document.querySelectorAll('[data-aos]').forEach(element => {
-                const currentAnimation = element.getAttribute('data-aos');
-                if (currentAnimation) {
-                    if (scrollDirection === 'down' && currentAnimation.includes('fade-down')) {
-                        element.setAttribute('data-aos', currentAnimation.replace('fade-down', 'fade-up'));
-                    } else if (scrollDirection === 'up' && currentAnimation.includes('fade-up')) {
-                        element.setAttribute('data-aos', currentAnimation.replace('fade-up', 'fade-down'));
-                    }
+            const form = this;
+            const formSuccess = document.getElementById('form-success');
+            const formError = document.getElementById('form-error');
+            
+            fetch(form.action, {
+                method: form.method,
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
                 }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Erfolgreich gesendet
+                    formSuccess.style.display = 'block';
+                    form.reset();
+                    
+                    // Nach kurzer Verzögerung zum Anfang scrollen
+                    setTimeout(() => {
+                        window.location.href = '#home';
+                        window.scrollTo(0, 0);
+                        
+                        // Erfolgs-Nachricht ausblenden
+                        setTimeout(() => {
+                            formSuccess.style.display = 'none';
+                        }, 1000);
+                    }, 2000);
+                } else {
+                    // Fehler beim Senden
+                    formError.style.display = 'block';
+                    setTimeout(() => {
+                        formError.style.display = 'none';
+                    }, 3000);
+                }
+            })
+            .catch(error => {
+                // Netzwerk- oder anderer Fehler
+                console.error('Formular-Fehler:', error);
+                formError.style.display = 'block';
+                setTimeout(() => {
+                    formError.style.display = 'none';
+                }, 3000);
             });
         });
-        
-        // Formular-Handling
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(this);
-                
-                fetch(this.action, {
-                    method: this.method,
-                    body: formData,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                })
-                .then(response => {
-                    const formSuccess = document.getElementById('form-success');
-                    const formError = document.getElementById('form-error');
-                    
-                    if (response.ok) {
-                        // Erfolgsmeldung anzeigen
-                        if (formSuccess) formSuccess.style.display = 'block';
-                        // Formular zurücksetzen
-                        this.reset();
-                        // Nach kurzer Verzögerung zurück zum Anfang
-                        setTimeout(() => {
-                            window.location.href = '#home';
-                            // Scrollposition zurücksetzen
-                            window.scrollTo(0, 0);
-                            // Erfolgsmeldung ausblenden
-                            if (formSuccess) {
-                                setTimeout(() => {
-                                    formSuccess.style.display = 'none';
-                                }, 1000);
-                            }
-                        }, 2000);
-                    } else {
-                        // Fehlermeldung anzeigen
-                        if (formError) {
-                            formError.style.display = 'block';
-                            setTimeout(() => {
-                                formError.style.display = 'none';
-                            }, 3000);
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.error('Formular-Übermittlungsfehler:', error);
-                    const formError = document.getElementById('form-error');
-                    if (formError) {
-                        formError.style.display = 'block';
-                        setTimeout(() => {
-                            formError.style.display = 'none';
-                        }, 3000);
-                    }
-                });
-            });
-        }
     </script>
 </body>
 </html>
