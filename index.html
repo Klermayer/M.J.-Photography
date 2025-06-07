@@ -1,428 +1,641 @@
-Websites für Unternehmer. Maßgeschneiderte Lösungen, die Ihr Unternehmen optimal präsentieren.</p>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empire Salon - Ihr Herrenfriseur in Wiener Neustadt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #ccc;
+        }
+
+        .burger-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .burger-line {
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .nav-menu a:hover {
+            color: #000;
+            background-color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #000 0%, #333 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #000;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: #000;
+            margin: 1rem auto;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Opening Hours */
+        .hours-container {
+            background: #000;
+            color: #fff;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hours-day {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .hours-day:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: #f9f9f9;
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #000;
+            color: #fff;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .footer-section p {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .burger-menu {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo" onclick="scrollToTop()">Empire Salon</a>
+            <div class="burger-menu" onclick="toggleMenu()">
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+                <div class="burger-line"></div>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#services">Unsere Dienstleistungen</a></li>
+                <li><a href="#hours">Öffnungszeiten</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#about">Über uns</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Empire Salon</h1>
+            <p>Ihr exklusiver Herrenfriseur in Wiener Neustadt. Erleben Sie professionelle Haarpflege und modernes Styling für den anspruchsvollen Mann.</p>
+            <a href="#contact" class="cta-button">Termin vereinbaren</a>
+        </div>
+    </section>
+
+ 
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <h2>Unsere Dienstleistungen</h2>
+        <div class="services-grid">
+            <div class="service-card fade-in">
+                <h3>Klassischer Herrenschnitt</h3>
+                <p>Zeitlose und elegante Schnitte für den Business-Look. Perfekt geschnitten für einen gepflegten, professionellen Auftritt.</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3>Moderner Herrenschnitt</h3>
+                <p>Trendy Cuts und angesagte Styles. Von Undercut bis Fade - wir setzen die neuesten Trends perfekt in Szene.</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3>Bart-Styling</h3>
+                <p>Präzise Barttrimmung, Konturierung und Pflege. Vom Vollbart bis zum dezenten Dreitagebart - alles aus einer Hand.</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3>Rasur & Pflege</h3>
+                <p>Traditionelle Nassrasur mit heißem Handtuch. Ein entspannendes Erlebnis für die perfekte Rasur.</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3>Haarpflege</h3>
+                <p>Professionelle Haarwäsche und Kopfhautbehandlung mit hochwertigen Produkten speziell für Männer.</p>
+            </div>
+            <div class="service-card fade-in">
+                <h3>Styling-Beratung</h3>
+                <p>Individuelle Beratung für Ihren Typ. Finden Sie den perfekten Look für Beruf und Freizeit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opening Hours Section -->
+    <section id="hours" class="section">
+        <h2>Öffnungszeiten</h2>
+        <div class="hours-container slide-in-left">
+            <div class="hours-grid">
+                <div class="hours-day">
+                    <span>Montag</span>
+                    <span>08:30 – 19:30</span>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon" style="color: var(--accent-red);">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Paid Advertising</h3>
-                    <p>Effektive Werbekampagnen auf Google, Facebook, Instagram und anderen Plattformen. Zielgenaue Ansprache Ihrer potenziellen Kunden.</p>
+                <div class="hours-day">
+                    <span>Dienstag</span>
+                    <span>08:30 – 19:30</span>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon" style="color: var(--accent-orange);">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Digitale Strategie</h3>
-                    <p>Wir entwickeln ganzheitliche digitale Strategien, die Ihre Online-Präsenz stärken und Ihren Umsatz steigern.</p>
+                <div class="hours-day">
+                    <span>Mittwoch</span>
+                    <span>08:30 – 19:30</span>
+                </div>
+                <div class="hours-day">
+                    <span>Donnerstag</span>
+                    <span>08:30 – 19:30</span>
+                </div>
+                <div class="hours-day">
+                    <span>Freitag</span>
+                    <span>08:30 – 20:00</span>
+                </div>
+                <div class="hours-day">
+                    <span>Samstag</span>
+                    <span>08:30 – 20:00</span>
+                </div>
+                <div class="hours-day">
+                    <span>Sonntag</span>
+                    <span>10:00 – 15:00</span>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>Über uns</h2>
+        <div class="fade-in">
+            <p style="text-align: center; font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                Im Empire Salon verbinden wir traditionelle Herrenfriseur-Handwerkskunst mit modernen Techniken und Trends. 
+                Unser erfahrenes Team steht für Qualität, Präzision und individuelle Beratung für jeden Mann. 
+                In entspannter, maskuliner Atmosphäre verwandeln wir Ihre Vorstellungen in den perfekten Look.
+            </p>
+        </div>
+    </section>
+
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Kontaktieren Sie uns</h2>
-            <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
-                <div class="alert alert-success" id="form-success">
-                    Vielen Dank für Ihre Nachricht! Wir werden uns so schnell wie möglich bei Ihnen melden.
-                </div>
-                <div class="alert alert-danger" id="form-error">
-                    Beim Senden Ihrer Nachricht ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.
-                </div>
-                <form id="contactForm" action="https://formspree.io/f/xwponvzq" method="POST">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">E-Mail</label>
-                        <input type="email" name="_replyto" id="email" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Telefon</label>
-                        <input type="tel" name="phone" id="phone" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Nachricht</label>
-                        <textarea name="message" id="message" class="form-control" required></textarea>
-                    </div>
-                    <input type="hidden" name="_subject" value="Neue Anfrage von der AdWerk-Website">
-                    <input type="text" name="_gotcha" style="display:none">
-                    <input type="hidden" name="_next" value="#home">
-                    <button type="submit" class="btn" style="border: none; cursor: pointer; width: 100%;">Absenden</button>
-                </form>
+    <section id="contact" class="section">
+        <h2>Kontakt & Standort</h2>
+        <div class="contact-grid">
+            <div class="contact-info slide-in-left">
+                <h3>Besuchen Sie uns</h3>
+                <p><strong>Empire Salon</strong></p>
+                <p>Babenbergerring 9a</p>
+                <p>2700 Wiener Neustadt</p>
+                <p style="margin-top: 1rem;"><strong>Telefon:</strong> 0669 3062436</p>
+                <p style="margin-top: 1rem; font-style: italic;">
+                    Rufen Sie uns an oder kommen Sie einfach vorbei. 
+                    Wir freuen uns auf Ihren Besuch!
+                </p>
+            </div>
+            <div class="map-container slide-in-right">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2672.8539516234887!2d16.248775!3d47.811875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476daa8b9b7e3c7f%3A0x7e4b7c8d9e0f1a2b!2sBabenbergerring%209a%2C%202700%20Wiener%20Neustadt%2C%20Austria!5e0!3m2!1sen!2sat!4v1625000000000!5m2!1sen!2sat"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">Ad<span>Werk</span></div>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Empire Salon</h3>
+                <p>Ihr Herrenfriseur in Wiener Neustadt</p>
+                <p>Professionell • Modern • Maskulin</p>
             </div>
-            <ul class="footer-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">Über uns</a></li>
-                <li><a href="#services">Dienstleistungen</a></li>
-                <li><a href="#contact">Kontakt</a></li>
-            </ul>
-            <div class="copyright">
-                &copy; 2025 AdWerk. Alle Rechte vorbehalten.
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <p>Babenbergerring 9a</p>
+                <p>2700 Wiener Neustadt</p>
+                <p>Tel: 0669 3062436</p>
             </div>
+            <div class="footer-section">
+                <h3>Öffnungszeiten</h3>
+                <p>Mo-Do: 08:30 – 19:30</p>
+                <p>Fr-Sa: 08:30 – 20:00</p>
+                <p>So: 10:00 – 15:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Empire Salon. Alle Rechte vorbehalten.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="impressum.html" style="color: #888; text-decoration: none; margin: 0 10px; transition: color 0.3s ease;">Impressum</a> | 
+                <a href="datenschutz.html" style="color: #888; text-decoration: none; margin: 0 10px; transition: color 0.3s ease;">Datenschutz</a>
+            </p>
         </div>
     </footer>
 
-    <!-- Cookie-Banner -->
-    <div id="cookieBanner" class="cookie-banner" style="display: none;">
-        <div class="cookie-main">
-            <div class="cookie-text">
-                <p>Wir verwenden Cookies, um Ihre Erfahrung auf unserer Website zu verbessern. Durch die Nutzung unserer Website stimmen Sie unserer Verwendung von Cookies zu.</p>
-            </div>
-            <div class="cookie-buttons">
-                <button id="cookieMoreInfo" class="cookie-more">Mehr anzeigen</button>
-                <button id="acceptCookies" class="cookie-btn cookie-accept">Akzeptieren</button>
-                <button id="declineCookies" class="cookie-btn cookie-decline">Nicht akzeptieren</button>
-            </div>
-        </div>
-        <div id="cookieDetails" class="cookie-details">
-            <h4>Verwendete Cookies und übermittelte Daten</h4>
-            <p>Auf unserer Website kommen folgende Arten von Cookies zum Einsatz:</p>
-            <ul>
-                <li><strong>Notwendige Cookies:</strong> Diese Cookies sind für die grundlegende Funktionalität der Website erforderlich und können nicht deaktiviert werden.</li>
-                <li><strong>Analyse-Cookies:</strong> Diese Cookies ermöglichen es uns, Besuche zu zählen und Bewegungsmuster auf unserer Website zu analysieren. Wir nutzen Google Analytics, um zu verstehen, wie Benutzer mit unserer Website interagieren.</li>
-            </ul>
-            <h4>Folgende Daten werden an Google Analytics übermittelt:</h4>
-            <ul>
-                <li>Anonymisierte IP-Adresse</li>
-                <li>Informationen über Ihren Browser und Ihr Gerät</li>
-                <li>Besuchte Seiten und Ihre Interaktionen auf unserer Website</li>
-                <li>Verweildauer auf unserer Website</li>
-                <li>Verweisende Website oder Quelle, von der Sie unsere Website besucht haben</li>
-            </ul>
-            <p>Die erhobenen Daten werden verwendet, um unser Webangebot zu verbessern und Ihnen ein besseres Nutzererlebnis zu bieten. Wir verkaufen Ihre Daten nicht an Dritte und verwenden sie ausschließlich für die genannten Analysezwecke.</p>
-            <p>Weitere Informationen zu unseren Datenschutzpraktiken finden Sie in unserer Datenschutzerklärung.</p>
-            
-            <!-- Hier ist der Button zur Datenschutzseite (korrigiert) -->
-            <a href="datenschutz.html" class="btn" style="display: inline-block; margin-top: 15px; font-size: 14px; padding: 8px 20px;">Zum Datenschutz</a>
-        </div>
-    </div>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-        // Cookie-Banner-Funktionalität
-        document.addEventListener('DOMContentLoaded', function() {
-            // AOS initialisieren
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: false,
-                mirror: true
-            });
-            
-            const cookieBanner = document.getElementById('cookieBanner');
-            const acceptBtn = document.getElementById('acceptCookies');
-            const declineBtn = document.getElementById('declineCookies');
-            const moreInfoBtn = document.getElementById('cookieMoreInfo');
-            const cookieDetails = document.getElementById('cookieDetails');
-            
-            // Prüfen, ob Cookie-Einstellung bereits vorhanden ist
-            const cookieChoice = localStorage.getItem('cookies-accepted');
-            
-            // Wenn noch keine Entscheidung getroffen wurde, Banner anzeigen
-            if (cookieChoice === null) {
-                cookieBanner.style.display = 'flex';
-            }
-            
-            // Cookie akzeptieren
-            acceptBtn.addEventListener('click', function() {
-                localStorage.setItem('cookies-accepted', 'true');
-                cookieBanner.style.display = 'none';
-                
-                // Google Analytics laden
-                loadGoogleAnalytics();
-            });
-            
-            // Cookie ablehnen
-            declineBtn.addEventListener('click', function() {
-                localStorage.setItem('cookies-accepted', 'false');
-                cookieBanner.style.display = 'none';
-            });
-            
-            // Mehr Informationen anzeigen/ausblenden
-            moreInfoBtn.addEventListener('click', function() {
-                cookieDetails.classList.toggle('active');
-                
-                // Text des Buttons ändern
-                if (cookieDetails.classList.contains('active')) {
-                    moreInfoBtn.textContent = 'Weniger anzeigen';
-                } else {
-                    moreInfoBtn.textContent = 'Mehr anzeigen';
-                }
-            });
-            
-            // Theme Toggle
-            const themeToggleDesktop = document.getElementById('themeToggle');
-            const themeToggleMobile = document.getElementById('mobileThemeToggle');
-            const htmlElement = document.documentElement;
-            
-            // Gespeichertes Theme laden oder Standard (light) setzen
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            htmlElement.setAttribute('data-theme', savedTheme);
-            
-            // Icons aktualisieren
-            if (savedTheme === 'dark') {
-                if (themeToggleDesktop) themeToggleDesktop.querySelector('i').className = 'fas fa-moon';
-                if (themeToggleMobile) themeToggleMobile.querySelector('i').className = 'fas fa-moon';
-            } else {
-                if (themeToggleDesktop) themeToggleDesktop.querySelector('i').className = 'fas fa-sun';
-                if (themeToggleMobile) themeToggleMobile.querySelector('i').className = 'fas fa-sun';
-            }
-            
-            // Theme Toggle Funktion
-            function toggleTheme() {
-                const currentTheme = htmlElement.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                htmlElement.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                
-                // Icons aktualisieren
-                const newIcon = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-                if (themeToggleDesktop) themeToggleDesktop.querySelector('i').className = newIcon;
-                if (themeToggleMobile) themeToggleMobile.querySelector('i').className = newIcon;
-            }
-            
-            // Event-Listener zu Theme-Toggles hinzufügen
-            if (themeToggleDesktop) {
-                themeToggleDesktop.addEventListener('click', toggleTheme);
-            }
-            
-            if (themeToggleMobile) {
-                themeToggleMobile.addEventListener('click', toggleTheme);
-            }
-
-            // Mobile Menü
-            const menuBtn = document.getElementById('menuBtn');
-            const closeBtn = document.getElementById('closeMenu');
-            const mobileMenu = document.getElementById('mobileMenu');
-            const overlay = document.getElementById('overlay');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
-            
-            // Menü öffnen
-            if (menuBtn) {
-                menuBtn.addEventListener('click', function() {
-                    mobileMenu.classList.add('active');
-                    overlay.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
-                });
-            }
-            
-            // Menü schließen
-            function closeMenu() {
-                mobileMenu.classList.remove('active');
-                overlay.style.display = 'none';
-                document.body.style.overflow = '';
-            }
-            
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeMenu);
-            }
-            
-            if (overlay) {
-                overlay.addEventListener('click', closeMenu);
-            }
-            
-            // Menü schließen bei Klick auf einen Link
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', closeMenu);
-            });
-
-            // Slideshow initialisieren
-            initSlideshow();
-        });
-
-        // Slideshow Funktionalität
-        function initSlideshow() {
-            let slideIndex = 0;
-            const slidesWrapper = document.getElementById('slidesWrapper');
-            const slides = document.querySelectorAll('.mySlides');
-            const totalSlides = slides.length; // Dynamisch die Anzahl der Slides ermitteln
-            const dots = document.getElementsByClassName("dot");
-            const prevSlideBtn = document.getElementById('prevSlide');
-            const nextSlideBtn = document.getElementById('nextSlide');
-            let slideInterval;
-            
-            // Anfangsposition setzen
-            updateSlidePosition();
-            
-            // Auto-Slideshow starten
-            startSlideshow();
-            
-            // Event-Listener für Pfeile
-            prevSlideBtn.addEventListener('click', function() {
-                navigateSlide(-1);
-            });
-            
-            nextSlideBtn.addEventListener('click', function() {
-                navigateSlide(1);
-            });
-            
-            // Event-Listener für Punkte
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].addEventListener('click', function() {
-                    goToSlide(i);
-                });
-            }
-            
-            // Touch-Events für Mobilgeräte
-            let touchStartX = 0;
-            let touchEndX = 0;
-            
-            slidesWrapper.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-                clearInterval(slideInterval);
-            }, { passive: true });
-            
-            slidesWrapper.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
-                handleSwipe();
-                startSlideshow();
-            }, { passive: true });
-            
-            function handleSwipe() {
-                // Mindestdistanz für einen Swipe
-                const minSwipeDistance = 50;
-                const swipeDistance = touchEndX - touchStartX;
-                
-                if (Math.abs(swipeDistance) >= minSwipeDistance) {
-                    if (swipeDistance < 0) {
-                        // Nach links wischen
-                        navigateSlide(1);
-                    } else {
-                        // Nach rechts wischen
-                        navigateSlide(-1);
-                    }
-                }
-            }
-            
-            function updateSlidePosition() {
-                slidesWrapper.style.transform = `translateX(-${slideIndex * 33.333}%)`;
-                updateDots();
-            }
-            
-            function updateDots() {
-                for (let i = 0; i < dots.length; i++) {
-                    dots[i].className = dots[i].className.replace(" active-dot", "");
-                }
-                dots[slideIndex].className += " active-dot";
-            }
-            
-            function navigateSlide(direction) {
-                // Intervall zurücksetzen
-                clearInterval(slideInterval);
-                
-                slideIndex += direction;
-                
-                // Bei Überlauf umschalten
-                if (slideIndex >= totalSlides) {
-                    slideIndex = 0;
-                } else if (slideIndex < 0) {
-                    slideIndex = totalSlides - 1;
-                }
-                
-                updateSlidePosition();
-                startSlideshow();
-            }
-            
-            function goToSlide(index) {
-                // Intervall zurücksetzen
-                clearInterval(slideInterval);
-                
-                slideIndex = index;
-                updateSlidePosition();
-                startSlideshow();
-            }
-            
-            function startSlideshow() {
-                // Existierendes Intervall löschen
-                clearInterval(slideInterval);
-                
-                // Neues Intervall setzen
-                slideInterval = setInterval(function() {
-                    slideIndex++;
-                    if (slideIndex >= totalSlides) {
-                        slideIndex = 0;
-                    }
-                    updateSlidePosition();
-                }, 5000);
-            }
-        }
-        
-        // Sanftes Scrollen für Anker-Links
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
         });
-        
-        // Formular-Handler
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const form = this;
-            const formSuccess = document.getElementById('form-success');
-            const formError = document.getElementById('form-error');
-            
-            fetch(form.action, {
-                method: form.method,
-                body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Erfolgreich gesendet
-                    formSuccess.style.display = 'block';
-                    form.reset();
-                    
-                    // Nach kurzer Verzögerung zum Anfang scrollen
-                    setTimeout(() => {
-                        window.location.href = '#home';
-                        window.scrollTo(0, 0);
-                        
-                        // Erfolgs-Nachricht ausblenden
-                        setTimeout(() => {
-                            formSuccess.style.display = 'none';
-                        }, 1000);
-                    }, 2000);
-                } else {
-                    // Fehler beim Senden
-                    formError.style.display = 'block';
-                    setTimeout(() => {
-                        formError.style.display = 'none';
-                    }, 3000);
-                }
-            })
-            .catch(error => {
-                // Netzwerk- oder anderer Fehler
-                console.error('Formular-Fehler:', error);
-                formError.style.display = 'block';
-                setTimeout(() => {
-                    formError.style.display = 'none';
-                }, 3000);
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
+        }
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .section');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+                
+                // Element is visible
+                if (elementTop < windowHeight * 0.8 && elementBottom > windowHeight * 0.2) {
+                    element.classList.add('visible');
+                } else {
+                    // Element is out of view - remove visible class for fade out effect
+                    if (elementTop > windowHeight || elementBottom < 0) {
+                        element.classList.remove('visible');
+                    }
+                }
+            });
+        }
+
+        // Header scroll effect
+        function handleHeaderScroll() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('scroll', () => {
+            handleScrollAnimations();
+            handleHeaderScroll();
+        });
+
+        window.addEventListener('load', () => {
+            handleScrollAnimations();
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                handleScrollAnimations();
+            }, 100);
         });
     </script>
 </body>
