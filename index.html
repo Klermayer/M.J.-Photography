@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SL CleanCars - Premium Autopflege</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -91,7 +90,7 @@
             transition: 0.3s;
         }
 
-        /* Hero Section */
+        /* Hero Section with Video */
         .hero {
             position: relative;
             height: 100vh;
@@ -101,12 +100,34 @@
             overflow: hidden;
         }
 
-        #canvas-container {
+        .hero-video-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.7) 100%);
             z-index: 1;
         }
 
@@ -122,6 +143,7 @@
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: -2px;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.5);
         }
 
         .hero h1 span {
@@ -130,11 +152,12 @@
 
         .hero p {
             font-size: clamp(1rem, 2vw, 1.3rem);
-            color: var(--gray);
+            color: var(--white);
             margin-bottom: 2.5rem;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
         }
 
         .cta-button {
@@ -147,11 +170,12 @@
             border-radius: 8px;
             transition: all 0.3s;
             font-size: 1.1rem;
+            box-shadow: 0 5px 20px rgba(255, 184, 0, 0.4);
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 184, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 184, 0, 0.6);
         }
 
         /* Section Styles */
@@ -208,6 +232,7 @@
         .package-card:hover {
             transform: translateY(-10px);
             border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(255, 184, 0, 0.2);
         }
 
         .package-card:hover::before {
@@ -317,6 +342,10 @@
             transition: all 0.3s;
         }
 
+        .payment-option:hover {
+            border-color: var(--gold);
+        }
+
         .payment-option.selected {
             border-color: var(--gold);
             background: rgba(255, 184, 0, 0.1);
@@ -355,6 +384,12 @@
             border-radius: 12px;
             text-align: center;
             border: 1px solid rgba(255, 184, 0, 0.2);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
         }
 
         .contact-card h3 {
@@ -415,6 +450,41 @@
             font-weight: 600;
         }
 
+        /* Video Upload Instructions */
+        .video-instructions {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(26, 26, 26, 0.95);
+            padding: 3rem;
+            border-radius: 16px;
+            border: 2px dashed var(--gold);
+            text-align: center;
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .video-instructions h3 {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-instructions p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .video-instructions code {
+            background: var(--dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            color: var(--gold);
+            font-family: monospace;
+        }
+
         /* Mobile */
         @media (max-width: 768px) {
             .nav-links {
@@ -444,6 +514,15 @@
             .booking-form {
                 padding: 2rem 1.5rem;
             }
+
+            .payment-options {
+                flex-direction: column;
+            }
+
+            .video-instructions {
+                padding: 2rem;
+                margin: 1rem;
+            }
         }
     </style>
 </head>
@@ -468,9 +547,40 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Video -->
     <section class="hero" id="home">
-        <div id="canvas-container"></div>
+        <div class="hero-video-container">
+            <!-- 
+            ═══════════════════════════════════════════════════════════
+            HIER DEIN VIDEO EINFÜGEN!
+            ═══════════════════════════════════════════════════════════
+            
+            1. Lade dein 4K Porsche-Video in denselben Ordner wie diese HTML-Datei
+            2. Benenne es z.B. "porsche.mp4"
+            3. Ersetze "DEIN-VIDEO-HIER.mp4" unten mit deinem Dateinamen
+            
+            Beispiel: <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="porsche.mp4" type="video/mp4">
+                      </video>
+            ═══════════════════════════════════════════════════════════
+            -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="DEIN-VIDEO-HIER.mp4" type="video/mp4">
+                Dein Browser unterstützt keine Videos.
+            </video>
+            
+            <!-- Falls Video nicht lädt: Anleitung anzeigen -->
+            <div class="video-instructions" id="videoInstructions">
+                <h3>📹 Video einfügen</h3>
+                <p>Dein Video ist noch nicht eingebunden!</p>
+                <p><strong>So geht's:</strong></p>
+                <p>1. Öffne diese HTML-Datei mit einem Code-Editor<br>
+                2. Suche nach: <code>DEIN-VIDEO-HIER.mp4</code><br>
+                3. Ersetze es mit deinem Video-Dateinamen<br>
+                4. Speichern & neu laden!</p>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Premium <span>Autopflege</span><br>auf höchstem Niveau</h1>
             <p>Professionelle Fahrzeugaufbereitung - Wir kommen zu Ihnen</p>
@@ -580,10 +690,10 @@
                 <label>Zahlungsmethode</label>
                 <div class="payment-options">
                     <div class="payment-option" onclick="selectPayment('bar')">
-                        <strong>Bar vor Ort</strong>
+                        <strong>💵 Bar vor Ort</strong>
                     </div>
                     <div class="payment-option" onclick="selectPayment('paypal')">
-                        <strong>PayPal</strong>
+                        <strong>💳 PayPal</strong>
                     </div>
                 </div>
                 <input type="hidden" id="payment" required>
@@ -627,103 +737,6 @@
     </div>
 
     <script>
-        // Three.js Car Animation
-        let scene, camera, renderer, car;
-
-        function initThree() {
-            scene = new THREE.Scene();
-            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-            renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-            
-            const container = document.getElementById('canvas-container');
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            container.appendChild(renderer.domElement);
-
-            // Car Group
-            car = new THREE.Group();
-
-            // Car body
-            const bodyGeometry = new THREE.BoxGeometry(4, 1.5, 2);
-            const bodyMaterial = new THREE.MeshStandardMaterial({ 
-                color: 0x1a1a1a,
-                metalness: 0.8,
-                roughness: 0.2
-            });
-            const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
-            body.position.y = 1;
-            car.add(body);
-
-            // Car top
-            const topGeometry = new THREE.BoxGeometry(2.5, 1, 1.8);
-            const top = new THREE.Mesh(topGeometry, bodyMaterial);
-            top.position.set(0, 2, 0);
-            car.add(top);
-
-            // Wheels
-            const wheelGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.3, 32);
-            const wheelMaterial = new THREE.MeshStandardMaterial({ 
-                color: 0x333333,
-                metalness: 0.6
-            });
-            
-            const positions = [
-                [-1.5, 0.5, 1.2],
-                [1.5, 0.5, 1.2],
-                [-1.5, 0.5, -1.2],
-                [1.5, 0.5, -1.2]
-            ];
-
-            positions.forEach(pos => {
-                const wheel = new THREE.Mesh(wheelGeometry, wheelMaterial);
-                wheel.rotation.z = Math.PI / 2;
-                wheel.position.set(pos[0], pos[1], pos[2]);
-                car.add(wheel);
-            });
-
-            // Orange accents
-            const accentGeometry = new THREE.BoxGeometry(4.1, 0.1, 2.1);
-            const accentMaterial = new THREE.MeshStandardMaterial({ 
-                color: 0xFFB800,
-                emissive: 0xFFB800,
-                emissiveIntensity: 0.3
-            });
-            const accent = new THREE.Mesh(accentGeometry, accentMaterial);
-            accent.position.y = 0.5;
-            car.add(accent);
-
-            scene.add(car);
-
-            // Lights
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-            scene.add(ambientLight);
-
-            const spotLight1 = new THREE.SpotLight(0xFFB800, 1);
-            spotLight1.position.set(5, 5, 5);
-            scene.add(spotLight1);
-
-            const spotLight2 = new THREE.SpotLight(0xffffff, 0.5);
-            spotLight2.position.set(-5, 5, -5);
-            scene.add(spotLight2);
-
-            camera.position.z = 8;
-            camera.position.y = 2;
-
-            animate();
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            car.rotation.y += 0.005;
-            renderer.render(scene, camera);
-        }
-
-        window.addEventListener('resize', () => {
-            const container = document.getElementById('canvas-container');
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        });
-
         // Navigation
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
@@ -773,8 +786,12 @@
                 payment: selectedPayment
             };
 
-            // In production, send this to your backend
+            // In production: Send to your backend/email service
             console.log('Booking:', formData);
+            
+            // Here you would send email via EmailJS or your backend
+            // Example with EmailJS (you need to set it up):
+            // emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
             
             // Show success modal
             document.getElementById('successModal').classList.add('active');
@@ -791,11 +808,25 @@
             document.getElementById('successModal').classList.remove('active');
         }
 
-        // Initialize
-        window.addEventListener('load', initThree);
-
         // Set minimum date to today
         document.getElementById('date').min = new Date().toISOString().split('T')[0];
+
+        // Check if video is loaded, hide instructions if yes
+        const video = document.querySelector('.hero-video');
+        const instructions = document.getElementById('videoInstructions');
+        
+        video.addEventListener('loadeddata', function() {
+            if (instructions) {
+                instructions.style.display = 'none';
+            }
+        });
+
+        // Hide instructions after 5 seconds even if video not loaded
+        setTimeout(() => {
+            if (instructions) {
+                instructions.style.opacity = '0.3';
+            }
+        }, 5000);
     </script>
 </body>
 </html>
