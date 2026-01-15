@@ -115,10 +115,11 @@
             left: 50%;
             min-width: 100%;
             min-height: 100%;
-            width: auto;
-            height: auto;
+            width: 100vw;
+            height: 100vh;
             transform: translate(-50%, -50%);
             object-fit: cover;
+            pointer-events: none;
         }
 
         .hero-overlay {
@@ -550,35 +551,13 @@
     <!-- Hero Section with Video -->
     <section class="hero" id="home">
         <div class="hero-video-container">
-            <!-- 
-            ═══════════════════════════════════════════════════════════
-            HIER DEIN VIDEO EINFÜGEN!
-            ═══════════════════════════════════════════════════════════
-            
-            1. Lade dein 4K Porsche-Video in denselben Ordner wie diese HTML-Datei
-            2. Benenne es z.B. "porsche.mp4"
-            3. Ersetze "DEIN-VIDEO-HIER.mp4" unten mit deinem Dateinamen
-            
-            Beispiel: <video class="hero-video" autoplay muted loop playsinline>
-                        <source src="porsche.mp4" type="video/mp4">
-                      </video>
-            ═══════════════════════════════════════════════════════════
-            -->
-            <video class="hero-video" autoplay muted loop playsinline>
-                <source src="DEIN-VIDEO-HIER.mp4" type="video/mp4">
-                Dein Browser unterstützt keine Videos.
-            </video>
-            
-            <!-- Falls Video nicht lädt: Anleitung anzeigen -->
-            <div class="video-instructions" id="videoInstructions">
-                <h3>📹 Video einfügen</h3>
-                <p>Dein Video ist noch nicht eingebunden!</p>
-                <p><strong>So geht's:</strong></p>
-                <p>1. Öffne diese HTML-Datei mit einem Code-Editor<br>
-                2. Suche nach: <code>DEIN-VIDEO-HIER.mp4</code><br>
-                3. Ersetze es mit deinem Video-Dateinamen<br>
-                4. Speichern & neu laden!</p>
-            </div>
+            <iframe 
+                class="hero-video"
+                src="https://www.youtube.com/embed/pC6ZTY0IvG0?autoplay=1&mute=1&loop=1&playlist=pC6ZTY0IvG0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+                frameborder="0"
+                allow="autoplay; encrypted-media"
+                allowfullscreen>
+            </iframe>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -811,22 +790,14 @@
         // Set minimum date to today
         document.getElementById('date').min = new Date().toISOString().split('T')[0];
 
-        // Check if video is loaded, hide instructions if yes
+        // Check if video is loaded
         const video = document.querySelector('.hero-video');
-        const instructions = document.getElementById('videoInstructions');
         
-        video.addEventListener('loadeddata', function() {
-            if (instructions) {
-                instructions.style.display = 'none';
-            }
-        });
-
-        // Hide instructions after 5 seconds even if video not loaded
-        setTimeout(() => {
-            if (instructions) {
-                instructions.style.opacity = '0.3';
-            }
-        }, 5000);
+        if (video) {
+            video.addEventListener('load', function() {
+                console.log('YouTube video loaded');
+            });
+        }
     </script>
 </body>
 </html>
